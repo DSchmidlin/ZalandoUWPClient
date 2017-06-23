@@ -1,0 +1,54 @@
+﻿<Page
+    x:Class="Zalando.Client.MainPage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:Zalando.Client"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:viewModels="using:Zalando.Client.ViewModels"
+    xmlns:dto="using:Zalando.Dto"
+    xmlns:converters="using:Zalando.Client.Converter"
+    mc:Ignorable="d">
+
+    <Page.Resources>
+        <converters:InvertBooleanConverter x:Key="InvertBooleanConverter" />
+    </Page.Resources>
+    
+    <RelativePanel Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+
+        <ProgressRing RelativePanel.AlignTopWithPanel="True" RelativePanel.AlignBottomWithPanel="True"
+                      RelativePanel.AlignLeftWithPanel="True" RelativePanel.AlignRightWithPanel="True"
+                      IsActive="{Binding Path=IsLoading}" HorizontalAlignment="Center" VerticalAlignment="Center"
+                      Height="100" Width="100"/>
+
+        <TextBox x:Name="searchBox" RelativePanel.AlignTopWithPanel="True" RelativePanel.AlignLeftWithPanel="True"
+                 RelativePanel.AlignRightWithPanel="True" Height="50px" Margin="5"
+                 Text="{Binding Path=Search, Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}"
+                 IsEnabled="{Binding Path=IsLoading, Converter={StaticResource InvertBooleanConverter}}">
+        </TextBox>
+
+        <ComboBox x:Name="genderSelector" RelativePanel.Below="searchBox" 
+                  RelativePanel.AlignLeftWithPanel="True" HorizontalAlignment="Stretch"
+                  RelativePanel.AlignRightWithPanel="True" Height="50px" Margin="5"
+                  ItemsSource="{Binding Path=PossibleGenders, Mode=OneWay, UpdateSourceTrigger=PropertyChanged}"
+                  SelectedItem="{Binding Path=SelectedGender, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                  IsEnabled="{Binding Path=IsLoading, Converter={StaticResource InvertBooleanConverter}}"/>
+
+        <ListView RelativePanel.Below="genderSelector" RelativePanel.Above="searchButton"
+                  RelativePanel.AlignLeftWithPanel="True" RelativePanel.AlignRightWithPanel="True"
+                  Margin="5" ItemsSource="{Binding Path=Matches, Mode=OneWay}"
+                  SelectedItem="{Binding Path=SelectedFacet, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                  IsEnabled="{Binding Path=IsLoading, Converter={StaticResource InvertBooleanConverter}}">
+
+            
+        </ListView>
+
+        <Button x:Name="searchButton" Content="Search" HorizontalAlignment="Stretch"
+                Height="50" Margin="10" FontSize="30"
+                RelativePanel.AlignLeftWithPanel="True"
+                RelativePanel.AlignRightWithPanel="True"
+                RelativePanel.AlignBottomWithPanel="True" 
+                Command="{Binding Path=SearchCommand, Mode=OneWay,UpdateSourceTrigger=PropertyChanged}"/>
+
+    </RelativePanel>
+</Page>

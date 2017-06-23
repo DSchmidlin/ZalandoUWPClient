@@ -1,0 +1,19 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <OutputType>Exe</OutputType>
+    <TargetFramework>netcoreapp1.0</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Zalando.Dto\Zalando.Dto.csproj" />
+    <ProjectReference Include="..\Zalando.Services.Contracts\Zalando.Services.Contracts.csproj" />
+    <ProjectReference Include="..\Zalando.Services\Zalando.Services.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Serilog" Version="2.5.0" />
+    <PackageReference Include="Serilog.Sinks.ColoredConsole" Version="2.0.0" />
+  </ItemGroup>
+
+</Project>

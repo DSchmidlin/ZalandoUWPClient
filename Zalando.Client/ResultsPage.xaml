@@ -17,7 +17,7 @@
                 </Grid.ColumnDefinitions>
 
                 <controls:ImageEx IsCacheEnabled="True"
-                              Source="{Binding Path=Media.Images[0].ThumbNailHDUrl}"
+                              Source="{Binding Path=Media.Images[0].MediumHdUrl}"
                               Stretch="UniformToFill"
                               PlaceholderSource="/Assets/ImagePlaceholder.png"
                               PlaceholderStretch="UniformToFill"
@@ -59,7 +59,7 @@
                 </Grid.RowDefinitions>
 
                 <controls:ImageEx IsCacheEnabled="True"
-                              Source="{Binding Path=Media.Images[0].ThumbNailHDUrl}"
+                              Source="{Binding Path=Media.Images[0].MediumHdUrl}"
                               Stretch="UniformToFill"
                               PlaceholderSource="/Assets/ImagePlaceholder.png"
                               PlaceholderStretch="UniformToFill"
